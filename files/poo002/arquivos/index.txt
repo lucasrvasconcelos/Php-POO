@@ -24,7 +24,7 @@
         }
 
         main {
-            max-width: 320px;
+            width: 320px;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.164);
             line-height: 25px;
@@ -32,8 +32,10 @@
 
         p {
             padding:10px;
-            
+            word-wrap: normal;
         }
+        
+
         main p:nth-child(1n){
             border:1px solid black;
         }
@@ -49,37 +51,23 @@
     <main> 
         <a href="./arquivos/classe.txt" download="classe.php">Classe.php</a>
         <a href="./arquivos/index.txt" download="index.php">Index.php</a>
-        <?php
-        require_once('classe.php');
-        
-        $canetaObject = new Caneta;
+            <?php
+            require_once('classe.php');
 
-        $corAtual = $canetaObject->getCor();
-        echo '<p>require_once("classe.php")</p>';
-        echo '<p>$canetaObject = new Caneta</p>';
-        echo '<p>$corAtual = $canetaObject->getCor()</p>';
-        echo "<p>A cor da caneta é: " . $corAtual . "</p>";
+                $conta = new Banco;
 
-        $canetaObject->setTampada();
-        $canetaObject->setDestampada();
+                $conta->setTipoConta('cc');
+                $conta->abrirConta();
+                $conta->depositar(100);
+                $conta->sacar(150);
+                
+            ?>
 
-        $tamparCaneta = $canetaObject->tampar();
-        if($tamparCaneta){
-            $msg = 'Sim';
-        } else {
-            $msg = 'Não';
-        }
-        echo "<p>É possível tampar a caneta: ". $msg ."</p>";
-
-        $destamparCaneta = $canetaObject->destampar();
-        if($destamparCaneta){
-            $msg = 'Sim';
-        } else {
-            $msg = 'Não';
-        }
-        echo "<p>É possível destampar a caneta: ". $msg ."</p>";
-        ?>
-            
+        <pre>
+            <?php
+            print_r($conta);
+            ?>
+        </pre>
     </main>
 </body>
 </html>
