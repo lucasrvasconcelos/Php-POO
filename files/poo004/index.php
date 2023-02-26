@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,21 +8,27 @@
 </head>
 <body>
     <?php
-    require_once("classes.php");
+    require_once("classe.php");
 
-    $lutadores = [0,1,2,3,4,5,6];
+    $lutadores = [0,1];
 
-    foreach ($lutadores as $key => $value) {
-        $lutadores[$key] = 
-            new Lutador('Nome '     + $key,
-            'nacionalidadeLutador ' + $key,
-            'idadeLutador '         + $key,
-            'alturaLutador '        + $key,
-            'pesoLutador '          + $key,
-            $value                  + $key,
-            $value                  + $key,
-            $value                  + $key);
+    $lutadores[0] = new Lutador('Lucas', 'Fortaleza', 22, 1.8, 70, 10, 0, 0);
+    $lutadores[1] = new Lutador('Gustavo', 'São Paulo', 35, 1.9, 70, 10, 0, 0);
+
+    if($lutadores[0] && $lutadores[1]){
+        $UFC = new Luta($lutadores[0], $lutadores[1]);
+        $UFC->marcarLuta();
     }
+    
+
+    
+
+    /* Regras
+    1° Só pode ser marcada a luta entre lutadores de mesma categoria !Feito
+    2° Os lutadores não podem ser os mesmos
+    3° Só pode acontecer a luta se ela for aprovada
+    4° O resultado só pode ser de vitória de um dos lutadores ou empate
+    */
 
     ?>
 </body>
